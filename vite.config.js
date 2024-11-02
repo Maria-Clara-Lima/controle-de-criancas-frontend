@@ -1,3 +1,4 @@
+/*configurações do Vite (não precisa mexer)*/
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
