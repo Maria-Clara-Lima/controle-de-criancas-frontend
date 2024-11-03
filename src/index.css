@@ -1,0 +1,12 @@
+/* Arquivo principal de CSS - terá as estilizações globais para todo o projeto*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Sora", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    width: 100vw;
+}
