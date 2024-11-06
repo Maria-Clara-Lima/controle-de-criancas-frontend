@@ -2,44 +2,72 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 100px ;
+    padding-top: 100px;
 }
 
-h1{
+h1 {
     font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 30px; 
+    align-items: center;
+    gap: 30px;
     padding: 80px;
     background-color: #F8DDAC;
     border-radius: 40px;
-    
+    width: 26rem;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+.input-container-eye {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 input {
-   padding: 10px;
+   padding: 10px 40px 10px 10px;
    border: none;
    border-radius: 10px;
+   width: 16rem;
 }
 
 input:focus {
     outline-color: #A83F2B;
 }
 
+.icone {
+    position: absolute;
+    right: 10px;
+    color: #A83F2B;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    
+}
+
 button {
     padding: 12px;
     border-radius: 20px;
-    color: #ffff;
+    color: #fff;
     background-color: #A83F2B;
     border: none;
     cursor: pointer;
+    width: 16rem;
 }
 
 button:hover {
     background-color: #9D321E;
     transition: 0.4s;
-    
 }
