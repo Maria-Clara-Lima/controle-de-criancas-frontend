@@ -1,26 +1,32 @@
 /* eslint-disable no-unused-vars */
 
-/*useState permite criação de variaveis de estado */
+/* PasswordEye.js */
 import React, { useState } from 'react';
-
-function PassWordEye() {
-
-    const [SenhaVisivel, setSenhaVisivel] = useState(false);
-
-    setSenhaVisivel(!SenhaVisivel);
-
-    if(SenhaVisivel == true) {
-       <input type="text" /> 
-    } else {
-        <input type= "password" />
-    }
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 
 
+function PasswordEye() {
+    const [senhaVisivel, setSenhaVisivel] = useState(false);
+
+    const alterarIcone = () => {
+        setSenhaVisivel(!senhaVisivel);
+    };
+
+    return (
+      <div className='senha-container'>
+        <input 
+          type={senhaVisivel ? "text" : "password"} 
+          placeholder='Senha' 
+          required 
+        />
+        {senhaVisivel ? (
+          <FaEye className="icone" onClick={alterarIcone} />
+        ) : (
+          <FaEyeSlash className="icone" onClick={alterarIcone} />
+        )}
+      </div>
+    );
 }
 
-
-
-
-
-export default PassWordEye
+export default PasswordEye;
