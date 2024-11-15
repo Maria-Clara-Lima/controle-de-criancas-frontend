@@ -1,105 +1,199 @@
 body {
-    background-color: #F8DDAC; 
-    font-family: 'Sora', sans-serif; /* Fonte Sora */
+  background-color: #F8DDAC;
+  font-family: 'Sora', sans-serif;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+.required {
+  color: red;
 }
 
 .cadastro-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #F8DDAC; 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #F8DDAC;
+}
+
+.form-title {
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 0;
 }
 
 .foto-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .foto-icon {
-    width: 100px;
-    height: 100px;
-    border: 2px solid black; /* Borda preta */
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white; /* Fundo branco */
+  width: 100px;
+  height: 100px;
+  border: 2px solid black; 
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white; 
 }
 
+
 .foto-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-icon {
-    font-size: 3rem;
-    color: #988d8d;
-}
-
-.remove-photo-button {
-    display: block;
-    margin: 10px auto; /* Adiciona uma margem inferior para afastar do nome */
-    padding: 2px 9px;
-    background-color: #454D1B;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+  font-size: 3rem;
+  color: #CCC;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 15px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    padding: 10px;
-    border: 1px solid #938f8f;
-    border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .checkbox-group {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .submit-button {
-    padding: 12px 60px;
-    background-color: #454D1B;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 30px auto 0; /* Centraliza o botão */
-    display: block; /* Alinha como um bloco para centralizar */
+  padding: 12px 60px;
+  background-color: #454D1B;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 30px auto 0; 
+  display: block; 
 }
 
 .form-group textarea {
-    height: 100px; /* Tamanho fixo para o campo de observações */
+  height: 100px; 
 }
 
 @media (max-width: 600px) {
-    .cadastro-form {
-        max-width: 100%;
-        padding: 10px;
-    }
+  .cadastro-form {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  padding-top: 50px; 
+}
+
+/*conteúdo do modal */
+.modal-content {
+  background: #F8DDAC;
+  padding: 40px; 
+  border-radius: 10px;
+  border: 15px solid #F6A456;  
+  text-align: center;
+  position: relative;
+  width: 700px; 
+  height: 300px; 
+}
+
+.modal-foto-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 50px;
+  border: 2px solid black; 
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+}
+
+
+.modal-buttons {
+  display: flex;
+  justify-content: center; 
+  gap: 100px; 
+  margin-top: 20px; 
+}
+
+
+.modal-button {
+  background-color: #92993C; 
+  color: white;
+  border: 2px solid #454D1B;
+  padding: 5px 25px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.submit-button {
+  background-color: #454D1B;
+  color: white;
+  padding: 10px 15px;
+  width: 200px;
+  border: 5%;
+  border-radius: 5;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #A83F2B;  
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: black; 
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-content h2 {
+  color: #A83F2B; 
+  font-size: 20px;
 }
