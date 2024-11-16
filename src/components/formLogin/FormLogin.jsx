@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './formLogin.css'; 
-import { FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa"
 import PasswordEye from "../../components/formLogin/PasswordEye.jsx"
+import { Link } from "react-router-dom"
+
 
 function FormLogin() {
   
@@ -12,7 +14,7 @@ function FormLogin() {
         <h1>Administrador</h1>
         
         <div className="input-container">
-          <input type="text" placeholder="Insira o nome do usuário" required />
+          <input type="text" maxLength="25" placeholder="Insira o nome do usuário" required />
           <FaUser className='icone'/>
         </div>
 
@@ -20,7 +22,11 @@ function FormLogin() {
           <PasswordEye />
         </div>
         
-        <button type="submit">Entrar</button>
+        <Link to="/">
+        <button>Entrar</button>
+        </Link>
+        
+        <p>Não tem uma conta? <a href="#">Registre-se</a></p>
       </form>
     </div>
   );

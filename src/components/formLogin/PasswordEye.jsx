@@ -17,6 +17,7 @@ function PasswordEye() {
       <div className='senha-container'>
         <input 
           type={senhaVisivel ? "text" : "password"} 
+          maxLength="25"
           placeholder='Senha' 
           required 
         />
