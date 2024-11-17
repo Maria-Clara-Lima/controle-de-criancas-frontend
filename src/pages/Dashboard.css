@@ -1,0 +1,109 @@
+/* Container principal do dashboard */
+.dashboard-container {
+  display: flex; /* Utiliza flexbox para o layout */
+  flex-direction: column; /* Organiza os filhos em coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  min-height: 100vh; /* Altura mínima da tela inteira */
+  background-color: #F8DDAC; /* Cor de fundo (#f4f4f4) */
+  padding-top: 5vh; /* Espaço adicional no topo */
+  position: relative; /* Para posicionamento absoluto do botão */
+  box-sizing: border-box; /* Inclui padding e border no tamanho total */
+  padding-left: 1rem; /* Espaço à esquerda */
+  padding-right: 1rem; /* Espaço à direita */
+}
+
+/* Container da foto de perfil */
+.photo-container {
+  margin: 2vh 0; /* Margem vertical (topo e embaixo) */
+}
+
+/* Foto de perfil */
+.profile-photo {
+  width: 150px; /* Largura da foto */
+  height: auto; /* Altura automática para manter a proporção */
+  border-radius: 50%; /* Deixa a foto redonda */
+  object-fit: cover; /* Cobre o elemento mantendo a proporção */
+}
+
+/* Container do campo de pesquisa */
+.search-container {
+  width: 100%; /* Largura total */
+  max-width: 600px; /* Largura máxima */
+  margin-top: 2vh; /* Margem superior */
+}
+
+/* Wrapper do campo de pesquisa */
+.search-input-wrapper {
+  position: relative; /* Para posicionamento do ícone */
+  width: 100%; /* Largura total */
+}
+
+/* Campo de pesquisa */
+.search-input {
+  width: 100%; /* Largura total */
+  padding: 0.5em 1em 0.5em 2.5em; /* Espaço para o ícone */
+  font-size: 1em; /* Tamanho da fonte */
+  border-radius: 30px; /* Borda arredondada */
+  border: 2px solid #000000; /* Borda preta (#000000) */
+  outline: none; /* Remove outline padrão */
+  box-sizing: border-box; /* Inclui padding e border no tamanho total */
+}
+
+/* Ícone de pesquisa */
+.search-icon {
+  position: absolute; /* Posicionamento absoluto */
+  top: 50%; /* Centraliza verticalmente */
+  left: 0.75em; /* Distância da esquerda */
+  transform: translateY(-50%); /* Ajusta centralização vertical */
+  font-size: 1em; /* Tamanho da fonte */
+  color: #000000; /* Cor do ícone (#000000) */
+}
+
+/* Container do botão de + */
+.add-button-container {
+  position: absolute; /* Posicionamento absoluto */
+  top: 1rem; /* Distância do topo */
+  right: 1rem; /* Distância da direita */
+}
+
+/* Botão de + */
+.add-button {
+  background-color: #A83F2B; /* Cor de fundo (#ff0000) */
+  color: #ffffff; /* Cor do texto (#ffffff) */
+  font-size: 16px; /* Tamanho da fonte */
+  width: 40px; /* Largura */
+  height: 40px; /* Altura */
+  border-radius: 50%; /* Deixa o botão redondo */
+  border: none; /* Remove borda padrão */
+  cursor: pointer; /* Muda o cursor ao passar por cima */
+  display: flex; /* Flexbox para centralizar conteúdo */
+  align-items: center; /* Alinha verticalmente */
+  justify-content: center; /* Alinha horizontalmente */
+  transition: background-color 0.3s ease; /* Transição suave de cor */
+}
+
+/* Hover do botão de + */
+.add-button:hover {
+  background-color: #8a371b; 
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .profile-photo {
+    width: 100px; 
+  }
+
+  .search-container {
+    max-width: 100%; 
+  }
+
+  .search-input {
+    padding: 0.5em 0.75em 0.5em 2em;
+  }
+
+  .add-button {
+    width: 30px; 
+    height: 30px; 
+    font-size: 14px; 
+  }
+}
