@@ -6,7 +6,7 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 
 
-function PasswordEyeConfirm() {
+function PasswordEyeConfirm({name, value, onChange}) {
     const [senhaVisivel, setSenhaVisivel] = useState(false);
 
     const alterarIcone = () => {
@@ -17,6 +17,9 @@ function PasswordEyeConfirm() {
       <div className='senha-container'>
         <input 
           type={senhaVisivel ? "text" : "password"} 
+          name={name}
+          value={value}
+          onChange={onChange}
           maxLength="25"
           placeholder='Confirme sua senha' 
           required 
