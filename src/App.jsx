@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Login from "./pages/Login/login.jsx";
 import Dashboard from "./pages/Dashboard/dashboard.jsx";
-import Cadastro_user from "./pages/Cadastro_user/cadastro_user.jsx";
+import Cadastro_user from "./pages/CadastroUser/CadastroUser.jsx";
 
 function App() {
   return (
