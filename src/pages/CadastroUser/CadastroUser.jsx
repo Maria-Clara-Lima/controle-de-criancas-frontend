@@ -1,9 +1,11 @@
+import FormCadastroUser from '../../components/formCadastroUser/FormCadastroUser.jsx'
+import './cadastroUser.css'
 
-const Cadastro_user = () => {
-    return (
-      <h1>Dont stop me now!</h1>
-    )
-  };
-  
-  export default Cadastro_user;
+const CadastroUser = () => {
+  return (
+    <FormCadastroUser/>
+  );
+};
+
+export default CadastroUser;
   
