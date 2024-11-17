@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 function FormLogin() {
   
   return (
+    
     <div className="container">
       <form>  
         <h1>Administrador</h1>
@@ -22,14 +23,16 @@ function FormLogin() {
           <PasswordEye />
         </div>
         
-        <Link to="/">
+        <Link to="/Dashboard">
         <button>Entrar</button>
         </Link>
         
-        <p>Não tem uma conta? <a href="#">Registre-se</a></p>
+        <p>Não tem uma conta? <Link to ="/Cadastro_user">Registre-se</Link></p>
       </form>
     </div>
   );
 }
+
+
 
 export default FormLogin;
