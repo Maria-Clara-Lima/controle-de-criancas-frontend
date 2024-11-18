@@ -1,8 +1,6 @@
-# React + Vite
+# Criando um projeto em react: Primeiros passos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/App/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Configuração do ambiente
+- abra o terminal no VS CODE, escreva "npx create-vite ." (aparecerá uma mensagem, aperte em "ignore files and continue"), selecione React e em seguida JavaScript.
+- Em seguida escreva "npm install ou npm i" e logo após "npm run dev" 
+- Depois desse processo, aparecerá o link do localhost, onde vai ser desenvolvido o projeto

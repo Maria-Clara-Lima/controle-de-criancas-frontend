@@ -1,8 +1,19 @@
+.principal {
+    height: 100vh;
+    background: url('/src/assets/images/LINHAS\ VERDES\ O\ Jardim\ .png');
+    background-size: cover;
+    background-position: center;
+    background-color: #454d1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
 .container {
     display: flex;
-    align-items: center;
     flex-direction: column;
     padding-top: 100px;
+    transform: translate(170px, -40px);
 }
 
 h1 {
@@ -23,7 +34,7 @@ form {
     width: 27rem;
 }
 
-a   {
+a{
     color: #A83F2B;
     font-size: 15px;
     text-decoration: none;
@@ -82,4 +93,29 @@ button {
 button:hover {
     background-color: #9D321E;
     transition: 0.4s;
+}
+
+#carimbo-padrao {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+    transform: translate(50px, -40px, -90px);
+    margin-left: 20px;
+    position: initial;
+}
+
+#folha-amarela{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 230px;
+    height: 230px;
+}
+
+#polen{
+    position: fixed;
+    bottom: 0; 
+    right: 0;
+    width: 230px;
+    height: 230px;
 }
