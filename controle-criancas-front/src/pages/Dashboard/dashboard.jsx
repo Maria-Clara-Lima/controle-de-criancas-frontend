@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css';
+import { FiPlus } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 // Função para buscar as crianças
 const fetchCriancas = async () => {
@@ -42,26 +44,29 @@ const Dashboard = () => {
 
     // Função para selecionar uma criança
     const handleSelectCrianca = (id) => {
-        navigate(`/checkin/${id}`); // Corrigido o caminho
+        navigate(`/checkin/${id}`);
     };
 
     return (
         <div className="dashboard-page">
+            <header>
+                <img className="logo" src="/src/assets/images/Logotipo Jardim Perfil ZN.png" alt="Logo" />
+                <Link to="/CadastroCrianca" className="botao-cadastro">
+                    <FiPlus />
+                </Link>
+                <input
+                    type="text"
+                    className="search-bar"
+                    placeholder="Pesquisar criança..."
+                    value={searchTerm}
+                    onChange={(e) => handleSearch(e.target.value)}
+                />
+            </header>
 
-            <div className="dashboard">
-                <img className='logo' src="/src/assets/images/Logotipo Jardim Perfil ZN.png" alt="Logo" />
-                <header className="dashboard-header">
-                    <input
-                        type="text"
-                        className="search-bar"
-                        placeholder="Pesquisar criança..."
-                        value={searchTerm}
-                        onChange={(e) => handleSearch(e.target.value)}
-                    />
-                </header>
-                <main className="dashboard-main">
-                    <ul className="children-list">
-                        {filteredCriancas.map((crianca) => (
+            <main className="dashboard-main">
+                <ul className="children-list">
+                    {searchTerm.trim() !== "" && filteredCriancas.length > 0 ? (
+                        filteredCriancas.map((crianca) => (
                             <li
                                 key={crianca.id}
                                 className="child-item"
@@ -75,10 +80,14 @@ const Dashboard = () => {
                                     </p>
                                 </div>
                             </li>
-                        ))}
-                    </ul>
-                </main>
-            </div>
+                        ))
+                    ) : (
+                        searchTerm.trim() !== "" && (
+                            <p className="no-results">Nenhum registro encontrado</p>
+                        )
+                    )}
+                </ul>
+            </main>
         </div>
     );
 };
