@@ -1,60 +1,86 @@
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css';
-import ButtonBack from '../../components/buttonBack/ButtonBack';
-// import PesquisaRecente from '../../components/pesquisaRecente/PesquisaRecente';
-import Footer from '../../components/footer/Footer';
 
+// Função para buscar as crianças
+const fetchCriancas = async () => {
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/criancas/');
+        if (!response.ok) throw new Error('Erro ao carregar crianças');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erro ao buscar as crianças:', error);
+        return [];
+    }
+};
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [criancas, setCriancas] = useState([]);
+    const [filteredCriancas, setFilteredCriancas] = useState([]);
+    const navigate = useNavigate();
 
-  const handleAddButtonClick = () => {
-    navigate('/CadastroCrianca');
-  };
+    // Carrega as crianças ao montar o componente
+    useEffect(() => {
+        const getCriancas = async () => {
+            const data = await fetchCriancas();
+            setCriancas(data);
+            setFilteredCriancas(data);
+        };
+        getCriancas();
+    }, []);
 
-  return (
-    <div className="dashboard-container">
-      <div className="button-back"> 
-        <ButtonBack /> 
-      </div>
-      
-      <div className="add-button-container">
-        <button className="add-button" onClick={handleAddButtonClick}>+</button>
-      </div>
+    // Função para filtrar as crianças com base na pesquisa
+    const handleSearch = (term) => {
+        setSearchTerm(term);
+        const filtered = criancas.filter((crianca) =>
+            crianca.nome.toLowerCase().includes(term.toLowerCase())
+        );
+        setFilteredCriancas(filtered);
+    };
 
-      {/* Ícone de foto */}
-      <div className="photo-container">
-        <img 
-          src="src/assets/images/Logotipo Jardim Perfil ZN.png" 
-          alt="Profile" 
-          className="profile-photo" 
-        />
-      </div>
+    // Função para selecionar uma criança
+    const handleSelectCrianca = (id) => {
+        navigate(`/checkin/${id}`); // Corrigido o caminho
+    };
 
-      {/* Campo de pesquisa */}
-      <div className="search-container">
-        <div className="search-input-wrapper">
-          <span className="search-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24">
-              <path d="M10 2a8 8 0 016.32 12.906l4.393 4.391-1.414 1.414-4.391-4.393A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z" fill="gray" alignmentBaseline='middle'/>
-            </svg>
-          </span>
-          <input 
-            type="text" 
-            className="search-input" 
-            placeholder="Insira o nome da criança" 
-          />
+    return (
+        <div className="dashboard-page">
 
-          {/* <PesquisaRecente /> */}
-
+            <div className="dashboard">
+                <img className='logo' src="/src/assets/images/Logotipo Jardim Perfil ZN.png" alt="Logo" />
+                <header className="dashboard-header">
+                    <input
+                        type="text"
+                        className="search-bar"
+                        placeholder="Pesquisar criança..."
+                        value={searchTerm}
+                        onChange={(e) => handleSearch(e.target.value)}
+                    />
+                </header>
+                <main className="dashboard-main">
+                    <ul className="children-list">
+                        {filteredCriancas.map((crianca) => (
+                            <li
+                                key={crianca.id}
+                                className="child-item"
+                                onClick={() => handleSelectCrianca(crianca.id)}
+                            >
+                                <div className="child-info">
+                                    <h3>{crianca.nome}</h3>
+                                    <p>
+                                        <strong>Sala:</strong> {crianca.sala} <br />
+                                        <strong>Idade:</strong> {crianca.idade} anos
+                                    </p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </main>
+            </div>
         </div>
-      </div>
-
-      <div className='folhagens-png'><img src="/controle-criancas-front/src/assets/images/ELEMENTOS-15 FOLHAGEM COM PÓLEM BAIXO.png" alt="" /></div>
-
-      <Footer/>
-    </div>
-  );
-}
+    );
+};
 
 export default Dashboard;

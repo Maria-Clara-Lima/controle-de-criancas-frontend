@@ -1,4 +1,4 @@
-.dashboard-container {
+body.dashboard-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,16 @@
   box-sizing: border-box;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.logo {
+  width: 5rem;
+  display: flex;
+  position: relative;
+  left: 5rem;
+  bottom: 1rem;
+  border-radius: 40px;
+  height: 5rem;
 }
 
 .photo-container {
@@ -80,62 +90,68 @@
 
 @media (max-width: 600px) {
   .profile-photo {
-    width: 100px;
+      width: 100px;
   }
 
   .search-container {
-    max-width: 100%;
+      max-width: 100%;
   }
 
   .search-input {
-
-    padding: 0.5em 0.75em 0.5em 2em;
-
-    width: 100%;
-    padding: 0.5em 1em 0.5em 2.5em;
-    font-size: 1em;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    outline: none;
-    box-sizing: border-box;
-  }
-  
-  .search-icon {
-    position: absolute;
-    top: 50%;
-    left: 0.75em;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: #989898;
-    align-items: center;
-  }
-  
-  .add-button-container {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-
+      padding: 0.5em 0.75em 0.5em 2em;
   }
 
   .add-button {
-    width: 30px;
-    height: 30px;
-    font-size: 14px;
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
   }
 }
 
 .button-back {
-background-color: none; /* Cor de fundo do botão */
-border: none; /* Sem borda */
-width: 50px; /* Largura do botão */
-height: 50px; /* Altura do botão */
-border-radius: 50%; /* Torna o botão redondo */
-display: flex;
-align-items: center;
-justify-content: center;
-position: fixed;
-top: 10px;
-left: 10px;
-cursor: pointer;
-z-index: 1000;
+  background-color: none;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.children-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 2vh;
+  width: 100%;
+  max-width: 600px;
+}
+
+.child-item {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.child-item:hover {
+  background-color: #f0f0f0;
+}
+
+.child-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.child-info p {
+  margin: 5px 0;
+  font-size: 14px;
 }
