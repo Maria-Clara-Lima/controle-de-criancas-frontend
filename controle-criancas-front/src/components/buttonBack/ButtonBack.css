@@ -1,23 +1,22 @@
 /* BackButton.css */
-.button-back {
-    padding: 4px; 
-    width: 50px; 
-    height: 50px; 
-    border-radius: 80%; 
+.button{
+  background-color: #A83F2B;
+  color: #fff;
+  bpadding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 90px;
+  left: 100px;
+}
+
+.voltar {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    position: fixed; 
-    top: 10px; 
-    left: 10px; 
-    cursor: pointer; 
-    z-index: 1000; 
   }
   
-  .arrow {
-    font-size: 24px;
-    color: #ffffff; 
-    font-weight: bold; /* Deixa a seta mais grossa */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para dar um efeito de profundidade */
-    transition: transform 0.3s ease; /* Transição suave ao passar o mouse */
+.arrow {
+    
   }

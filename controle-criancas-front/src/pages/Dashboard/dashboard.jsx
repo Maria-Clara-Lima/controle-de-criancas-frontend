@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css';
 import ButtonBack from '../../components/buttonBack/ButtonBack';
-
-
+// import PesquisaRecente from '../../components/pesquisaRecente/PesquisaRecente';
+import Footer from '../../components/footer/Footer';
 
 
 const Dashboard = () => {
@@ -36,7 +36,7 @@ const Dashboard = () => {
         <div className="search-input-wrapper">
           <span className="search-icon">
             <svg width="20" height="20" viewBox="0 0 24 24">
-              <path d="M10 2a8 8 0 016.32 12.906l4.393 4.391-1.414 1.414-4.391-4.393A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z" fill="black"/>
+              <path d="M10 2a8 8 0 016.32 12.906l4.393 4.391-1.414 1.414-4.391-4.393A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z" fill="gray" alignmentBaseline='middle'/>
             </svg>
           </span>
           <input 
@@ -44,8 +44,15 @@ const Dashboard = () => {
             className="search-input" 
             placeholder="Insira o nome da criança" 
           />
+
+          {/* <PesquisaRecente /> */}
+
         </div>
       </div>
+
+      <div className='folhagens-png'><img src="/controle-criancas-front/src/assets/images/ELEMENTOS-15 FOLHAGEM COM PÓLEM BAIXO.png" alt="" /></div>
+
+      <Footer/>
     </div>
   );
 }

@@ -10,8 +10,17 @@ const BackButton = () => {
   };
 
   return (
-    <button onClick={handleBack} className="back-button">
-      <span className="arrow">←</span>
+    <button onClick={handleBack} className="voltar">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        className="bi bi-arrow-left"
+        viewBox="0 0 16 16"
+      >
+        <path d="M11 7H4.707l3.646-3.646a.5.5 0 0 0-.708-.708l-5 5a.5.5 0 0 0 0 .708l5 5a.5.5 0 0 0 .708-.708L4.707 9H11a.5.5 0 0 0 0-1z" />
+      </svg>
     </button>
   );
 };
