@@ -11,9 +11,13 @@ Certifique-se de ter instalado no seu sistema:
 ## Passo a Passo de Configuração
 
 ### 1. Inicialize o projeto com o Vite
-Abra o terminal no VS Code.
+Abra o terminal no VS Code e acesse o diretório principal:
 
-Execute o seguinte comando para criar um novo projeto com o Vite:
+```bash
+cd controle-criancas-front
+```
+
+Dentro do diretório, execute o seguinte comando para criar um novo projeto com o Vite:
 
 ```bash
 npx create-vite
