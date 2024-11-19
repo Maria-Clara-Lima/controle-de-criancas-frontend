@@ -43,7 +43,7 @@ const Dashboard = () => {
     };
 
     // Função para selecionar uma criança
-    const handleSelectCrianca = (id) => {
+    const handleSelectCrianca = (id) => {                    //lalalalalalala
         navigate(`/checkin/${id}`);
     };
 
