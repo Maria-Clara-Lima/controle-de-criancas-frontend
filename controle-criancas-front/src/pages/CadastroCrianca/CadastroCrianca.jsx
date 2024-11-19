@@ -1,58 +1,27 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaUser, FaArrowLeft } from "react-icons/fa"; // Ícones
-import { IoClose } from "react-icons/io5"; // Ícone do "x"
-import axios from "axios";
+import { useNavigate } from "react-router-dom";  // Importando o hook useNavigate
 import "./CadastroCrianca.css";
 
 const CadastroCrianca = () => {
+  const navigate = useNavigate();  // Usando o hook para redirecionar
   const [nomeCrianca, setNomeCrianca] = useState("");
   const [nomeResponsavel1, setNomeResponsavel1] = useState("");
-  const [nomeResponsavel2, setNomeResponsavel2] = useState("");
+  const [parentesco1, setParentesco1] = useState("");
   const [telefone1, setTelefone1] = useState("");
+  const [nomeResponsavel2, setNomeResponsavel2] = useState("");
+  const [parentesco2, setParentesco2] = useState("");
   const [telefone2, setTelefone2] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
-  const [sala, setSala] = useState("");
-  const [tipo, setTipo] = useState(""); // membro ou visitante
+  const [sala, setSala] = useState(""); 
+  const [tipo, setTipo] = useState(""); 
   const [observacao, setObservacao] = useState("");
   const [foto, setFoto] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [parentesco1, setParentesco1] = useState("");
-  const [parentesco2, setParentesco2] = useState("");
-  const [invalidFields, setInvalidFields] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const navigate = useNavigate();
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFoto(reader.result);
-        setIsModalOpen(false);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleRemovePhoto = () => {
-    setFoto("");
-    setIsModalOpen(false);
-  };
+  const [invalidFields, setInvalidFields] = useState(false);
 
   const handleTelefoneChange = (value, setTelefone) => {
-    value = value.replace(/\D/g, ""); // Apenas números
-    if (value.length > 0) value = `(${value}`;
-    if (value.length > 3) value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-    if (value.length > 9) value = `(${value.slice(0, 3)}) ${value.slice(3, 7)}-${value.slice(7)}`;
-    setTelefone(value);
-  };
-
-  const handleDataNascimentoChange = (e) => {
-    let value = e.target.value.replace(/\D/g, ""); // Apenas números
-    if (value.length > 2) value = `${value.slice(0, 2)}/${value.slice(2)}`;
-    if (value.length > 4) value = `${value.slice(0, 2)}/${value.slice(2, 4)}/${value.slice(4)}`;
-    setDataNascimento(value);
+    const rawValue = value.replace(/\D/g, "");
+    setTelefone(rawValue);
   };
 
   const validateForm = () => {
@@ -77,30 +46,48 @@ const CadastroCrianca = () => {
 
     if (validateForm()) {
       try {
-        const formData = new FormData();
-        formData.append("nome", nomeCrianca);
-        formData.append("data_nascimento", dataNascimento);
-        formData.append("sala", sala);
-        formData.append("nomeResponsavel1", nomeResponsavel1);
-        formData.append("telefoneResponsavel1", telefone1);
-        formData.append("parentesco1", parentesco1);
-        formData.append("nomeResponsavel2", nomeResponsavel2);
-        formData.append("telefoneResponsavel2", telefone2);
-        formData.append("parentesco2", parentesco2);
-        formData.append("classificacao", tipo);
-        formData.append("observacao", observacao);
-        if (foto) {
-          formData.append("foto", foto); // Adicionando a foto
+        // Preparando os dados como um objeto JSON
+        const data = {
+          nome: nomeCrianca,
+          data_nascimento: dataNascimento,
+          classificacao: tipo,
+          sala: sala,
+          observacao: observacao,
+          responsavel_1: {
+            nome: nomeResponsavel1,
+            telefone_responsavel: telefone1,
+            relacionamento_crianca: parentesco1,
+          },
+        };
+
+        // Adicionando responsável 2 se existir
+        if (nomeResponsavel2) {
+          data.responsavel_2 = {
+            nome: nomeResponsavel2,
+            telefone_responsavel: telefone2,
+            relacionamento_crianca: parentesco2,
+          };
         }
+
+        // Logando os dados para verificar o formato
+        console.log("Dados enviados para o servidor:", data);
 
         const response = await fetch("http://127.0.0.1:8000/api/cadastro/crianca/", {
           method: "POST",
-          body: formData, // Usando FormData em vez de JSON
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data), // Enviando como JSON
         });
 
+        // Verificando a resposta do servidor
         if (response.ok) {
           setSuccessMessage("Cadastro realizado com sucesso!");
-          // Limpar o formulário
+          
+          // Redirecionando para o dashboard
+          navigate("/dashboard", { state: { successMessage: "Cadastro realizado com sucesso!" } });
+
+          // Resetando os campos após o cadastro
           setNomeCrianca("");
           setDataNascimento("");
           setSala("");
@@ -114,9 +101,12 @@ const CadastroCrianca = () => {
           setObservacao("");
           setFoto("");
         } else {
-          throw new Error("Erro ao realizar o cadastro.");
+          const errorData = await response.json();
+          console.error("Erro de resposta:", errorData);
+          alert("Erro desconhecido ao realizar o cadastro.");
         }
       } catch (error) {
+        console.error("Erro ao realizar o cadastro:", error);
         alert("Ocorreu um erro. Por favor, tente novamente.");
       }
     }
@@ -126,6 +116,9 @@ const CadastroCrianca = () => {
     <div className="form-container">
       <h1>Cadastro de Criança</h1>
       <form onSubmit={handleSubmit}>
+        <label>Foto:</label>
+        <input type="file" onChange={(e) => setFoto(e.target.files[0])} />
+
         <label>Nome da Criança:</label>
         <input
           type="text"
@@ -136,54 +129,83 @@ const CadastroCrianca = () => {
         />
 
         <label>Sala:</label>
-        <input
-          type="text"
+        <select
           name="sala"
           value={sala}
           onChange={(e) => setSala(e.target.value)}
+          required
+        >
+          <option value="">Selecione a sala</option>
+          <option value="kids 1">Kids 1</option>
+          <option value="kids 2">Kids 2</option>
+          <option value="kids 3">Kids 3</option>
+          <option value="teens">Teens</option>
+          <option value="adolescentes">Adolescentes</option>
+        </select>
+
+        <label>Nome do Responsável 1:</label>
+        <input
+          type="text"
+          name="responsavel_1"
+          value={nomeResponsavel1}
+          onChange={(e) => setNomeResponsavel1(e.target.value)}
+          required
+        />
+
+        <label>Parentesco com a Criança:</label>
+        <input
+          type="text"
+          name="parentesco1"
+          value={parentesco1}
+          onChange={(e) => setParentesco1(e.target.value)}
           required
         />
 
         <label>Telefone do Responsável 1:</label>
         <input
           type="text"
+          inputMode="numeric"
           name="telefone1"
           value={telefone1}
           onChange={(e) => handleTelefoneChange(e.target.value, setTelefone1)}
+          maxLength={11}
           required
-        />
-
-        <label>Nome do Responsável 1:</label>
-        <input
-          type="text"
-          name="nomeResponsavel1"
-          value={nomeResponsavel1}
-          onChange={(e) => setNomeResponsavel1(e.target.value)}
-          required
-        />
-
-        <label>Telefone do Responsável 2:</label>
-        <input
-          type="text"
-          name="telefone2"
-          value={telefone2}
-          onChange={(e) => handleTelefoneChange(e.target.value, setTelefone2)}
+          placeholder="81999999999"
         />
 
         <label>Nome do Responsável 2:</label>
         <input
           type="text"
-          name="nomeResponsavel2"
+          name="responsavel_2"
           value={nomeResponsavel2}
           onChange={(e) => setNomeResponsavel2(e.target.value)}
         />
 
-        <label>Data de Nascimento:</label>
+        <label>Parentesco com a Criança:</label>
         <input
           type="text"
+          name="parentesco2"
+          value={parentesco2}
+          onChange={(e) => setParentesco2(e.target.value)}
+        />
+
+        <label>Telefone do Responsável 2:</label>
+        <input
+          type="text"
+          inputMode="numeric"
+          name="telefone2"
+          value={telefone2}
+          onChange={(e) => handleTelefoneChange(e.target.value, setTelefone2)}
+          maxLength={11}
+          placeholder="81999999999"
+        />
+
+        <label>Data de Nascimento:</label>
+        <input
+          type="date"
           name="dataNascimento"
           value={dataNascimento}
-          onChange={handleDataNascimentoChange}
+          onChange={(e) => setDataNascimento(e.target.value)}
           required
         />
 
@@ -194,8 +216,10 @@ const CadastroCrianca = () => {
           onChange={(e) => setTipo(e.target.value)}
           required
         >
+          <option value="">Selecione</option>
           <option value="membro">Membro</option>
           <option value="visitante">Visitante</option>
+          <option value="congregado">Congregado</option>
         </select>
 
         <label>Observações:</label>
@@ -204,19 +228,6 @@ const CadastroCrianca = () => {
           value={observacao}
           onChange={(e) => setObservacao(e.target.value)}
         />
-
-        <label>Foto:</label>
-        <input
-          type="file"
-          onChange={handleFileChange}
-        />
-
-        {foto && (
-          <div>
-            <img src={foto} alt="Foto da Criança" />
-            <button type="button" onClick={handleRemovePhoto}>Remover Foto</button>
-          </div>
-        )}
 
         {invalidFields && <p className="error-message">Preencha todos os campos obrigatórios.</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
