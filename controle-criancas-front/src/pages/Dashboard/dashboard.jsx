@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './dashboard.css';
 import { FiPlus } from "react-icons/fi";
-import { Link } from 'react-router-dom';
+import PopUp from '../../components/popUp/PopUp.jsx'; // Certifique-se de importar o PopUp corretamente
 
 // Função para buscar as crianças
 const fetchCriancas = async () => {
@@ -21,7 +21,8 @@ const Dashboard = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [criancas, setCriancas] = useState([]);
     const [filteredCriancas, setFilteredCriancas] = useState([]);
-    const navigate = useNavigate();
+    const [selectedCrianca, setSelectedCrianca] = useState(null); // Criança selecionada
+    const [showPopup, setShowPopup] = useState(false); // Controla exibição do popup
 
     // Carrega as crianças ao montar o componente
     useEffect(() => {
@@ -42,9 +43,10 @@ const Dashboard = () => {
         setFilteredCriancas(filtered);
     };
 
-    // Função para selecionar uma criança
-    const handleSelectCrianca = (id) => {                    //lalalalalalala
-        navigate(`/checkin/${id}`);
+    // Função para abrir o popup com a criança selecionada
+    const handleSelectCrianca = (crianca) => {
+        setSelectedCrianca(crianca);
+        setShowPopup(true);
     };
 
     return (
@@ -68,9 +70,9 @@ const Dashboard = () => {
                     {searchTerm.trim() !== "" && filteredCriancas.length > 0 ? (
                         filteredCriancas.map((crianca) => (
                             <li
-                                key={crianca.id}
+                                key={crianca.id} // Garante que cada item da lista tem um key único
                                 className="child-item"
-                                onClick={() => handleSelectCrianca(crianca.id)}
+                                onClick={() => handleSelectCrianca(crianca)}
                             >
                                 <div className="child-info">
                                     <h3>{crianca.nome}</h3>
@@ -88,6 +90,14 @@ const Dashboard = () => {
                     )}
                 </ul>
             </main>
+
+            {/* Popup para exibir detalhes */}
+            {showPopup && (
+                <PopUp
+                    crianca={selectedCrianca}
+                    onClose={() => setShowPopup(false)}
+                />
+            )}
         </div>
     );
 };
