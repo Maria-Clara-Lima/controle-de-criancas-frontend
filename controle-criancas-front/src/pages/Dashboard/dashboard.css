@@ -1,3 +1,5 @@
+
+/*tela de dashboard*/ /*lalalal*/
 body.dashboard-page {
   display: flex;
   flex-direction: column;
@@ -13,122 +15,49 @@ body.dashboard-page {
 
 .logo {
   width: 5rem;
-  display: flex;
   position: relative;
-  left: 5rem;
-  bottom: 1rem;
+  left: 47%;
+  bottom: 4rem;
   border-radius: 40px;
   height: 5rem;
 }
 
-.photo-container {
-  margin: 2vh 0;
-}
-
-.profile-photo {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.search-container {
-  width: 100%;
-  max-width: 600px;
-  margin-top: 2vh;
-}
-
-.search-input-wrapper {
+input.search-bar {
+  width: 60%;
   position: relative;
-  width: 100%;
+  left: 12%;
+  margin-top: 10rem;
 }
 
-.search-input {
-  width: 100%;
-  padding: 0.5em 1em 0.5em 2.5em;
-  font-size: 1em;
-  border-radius: 30px;
-  border: 2px solid #949494;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.search-icon {
-  position: absolute;
-  top: 50%;
-  left: 0.75em;
-  transform: translateY(-50%);
-  font-size: 1em;
-  color: #989898;
-  align-items: center;
-}
-
-.add-button-container {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-.add-button {
-  background-color: #A83F2B;
-  color: #ffffff;
-  font-size: 16px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  display: flex;
+.botao-cadastro {
+  position: relative;
+  bottom: 7rem;
+  right: 2rem;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
-}
-
-.add-button:hover {
-  background-color: #8a371b;
-}
-
-@media (max-width: 600px) {
-  .profile-photo {
-      width: 100px;
-  }
-
-  .search-container {
-      max-width: 100%;
-  }
-
-  .search-input {
-      padding: 0.5em 0.75em 0.5em 2em;
-  }
-
-  .add-button {
-      width: 30px;
-      height: 30px;
-      font-size: 14px;
-  }
-}
-
-.button-back {
-  background-color: none;
-  border: none;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  cursor: pointer;
-  z-index: 1000;
+  background-color:#A83F2B; 
+  color: white; 
+  border: none;
+  border-radius: 50%; 
+  font-size: 24px;
+}
+
+.botao-cadastro:hover{
+  background-color: #9c3722;
+  color: white;
 }
 
 .children-list {
   list-style-type: none;
   padding: 0;
-  margin-top: 2vh;
+  margin-top: 6vh;
   width: 100%;
+  position: relative;
+  left: 29%;
+  
   max-width: 600px;
 }
 
@@ -136,6 +65,8 @@ body.dashboard-page {
   background-color: #ffffff;
   padding: 15px;
   margin-bottom: 10px;
+  position: relative;
+  left: 5rem;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -154,4 +85,11 @@ body.dashboard-page {
 .child-info p {
   margin: 5px 0;
   font-size: 14px;
+}
+
+.no-results {
+  margin-top: 2vh;
+  font-size: 16px;
+  color: #888;
+  text-align: center;
 }
