@@ -1,22 +1,19 @@
 /* BackButton.css */
-.button{
-  background-color: #A83F2B;
-  color: #fff;
-  bpadding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 90px;
-  left: 100px;
-}
+
 
 .voltar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #A83F2B;
+  color: #fff;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  right: 35rem;
+  top: 1rem;
+  width: 3rem;
+  height: 3rem;
   }
   
-.arrow {
-    
-  }
