@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";  // Importando o hook useNavigate
+import { useNavigate } from "react-router-dom";
+import ButtonBack from '../../components/buttonBack/ButtonBack.jsx'  // Importando o hook useNavigate
 import "./CadastroCrianca.css";
 
 const CadastroCrianca = () => {
@@ -113,13 +114,17 @@ const CadastroCrianca = () => {
   };
 
   return (
+     
     <div className="form-container">
+      <div className="titulo">
+        <ButtonBack />
       <h1>Cadastro de Criança</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Foto:</label>
-        <input type="file" onChange={(e) => setFoto(e.target.files[0])} />
+  </div>
+     <form onSubmit={handleSubmit}>
+        <p>Foto:</p>
+        <input className="input-file" type="file" onChange={(e) => setFoto(e.target.files[0])} />
 
-        <label>Nome da Criança:</label>
+        <label className="nome-crianca">Nome da Criança:</label>
         <input
           type="text"
           name="nomeCrianca"
@@ -128,8 +133,9 @@ const CadastroCrianca = () => {
           required
         />
 
-        <label>Sala:</label>
+        <label className="titulo-sala">Sala:</label>
         <select
+          className="sala"
           name="sala"
           value={sala}
           onChange={(e) => setSala(e.target.value)}
@@ -143,7 +149,7 @@ const CadastroCrianca = () => {
           <option value="adolescentes">Adolescentes</option>
         </select>
 
-        <label>Nome do Responsável 1:</label>
+        <label className="nome-responsavel">Nome do Responsável 1:</label>
         <input
           type="text"
           name="responsavel_1"
@@ -173,7 +179,7 @@ const CadastroCrianca = () => {
           placeholder="81999999999"
         />
 
-        <label>Nome do Responsável 2:</label>
+        <label className="responsavel-2-nome">Nome do Responsável 2:</label>
         <input
           type="text"
           name="responsavel_2"
@@ -200,7 +206,7 @@ const CadastroCrianca = () => {
           placeholder="81999999999"
         />
 
-        <label>Data de Nascimento:</label>
+        <label className="data">Data de Nascimento:</label>
         <input
           type="date"
           name="dataNascimento"
@@ -209,8 +215,9 @@ const CadastroCrianca = () => {
           required
         />
 
-        <label>Classificação:</label>
+        <label className="classificacao">Classificação:</label>
         <select
+          className="classificacao-opcao"
           name="tipo"
           value={tipo}
           onChange={(e) => setTipo(e.target.value)}
@@ -222,8 +229,9 @@ const CadastroCrianca = () => {
           <option value="congregado">Congregado</option>
         </select>
 
-        <label>Observações:</label>
+        <label className="observacoes">Observações:</label>
         <textarea
+          className="textarea-obs"
           name="observacao"
           value={observacao}
           onChange={(e) => setObservacao(e.target.value)}
