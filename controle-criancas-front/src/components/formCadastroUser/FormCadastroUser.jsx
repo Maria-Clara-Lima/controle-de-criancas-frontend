@@ -9,7 +9,7 @@ function FormCadastroUser({ formData, handleChange, handleSubmit, errors, succes
   return (
     <div className='principal'>
       <div className="icon-image"></div>
-      <div className="container">
+      <div className="container-register">
         <form onSubmit={handleSubmit}>
           <h1>Registre-se</h1>
           

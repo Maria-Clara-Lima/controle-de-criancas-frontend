@@ -41,7 +41,7 @@ const PopUp = ({ crianca, onClose }) => {
         <div className="popup-overlay">
             <div className="popup-content">
                 <button className="botao-back" onClick={onClose}>
-                    <IoIosArrowBack /> Voltar
+                    <IoIosArrowBack /> 
                 </button>
 
                 <h2>{crianca.nome}</h2>

@@ -16,13 +16,14 @@ const FormLogin = ({ formData, handleChange, handleSubmit, errors, successMessag
         <img src="/src/assets/images/ELEMENTOS-4 CARIMBO PADRÃO.png" alt="carimbo-padrão" id='carimbo-padrao' />
       </div>
 
-      <div className="container">
+      <div className="container-user">
         <form onSubmit={handleSubmit}>  
           <h1>Administrador</h1>
           
           {/* Campo de Nome de Usuário */}
           <div className="input-container">
             <input 
+              className="input-name"
               type="text" 
               name="username"
               maxLength="25" 

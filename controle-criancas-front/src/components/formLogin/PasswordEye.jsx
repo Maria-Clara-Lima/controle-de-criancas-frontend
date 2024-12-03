@@ -15,7 +15,8 @@ function PasswordEye({name, value, onChange}) {
 
     return (
       <div className='senha-container'>
-        <input 
+        <input
+          className="input-password" 
           type={senhaVisivel ? "text" : "password"} 
           name={name}
           value={value}

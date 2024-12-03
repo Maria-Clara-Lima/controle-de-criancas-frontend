@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonBack from '../../components/buttonBack/ButtonBack.jsx'  // Importando o hook useNavigate
 import "./CadastroCrianca.css";
+import Footer from "../../components/footer/Footer.jsx";
 
 const CadastroCrianca = () => {
   const navigate = useNavigate();  // Usando o hook para redirecionar
@@ -242,6 +243,8 @@ const CadastroCrianca = () => {
 
         <button type="submit">Confirmar Cadastro</button>
       </form>
+
+      <Footer />
     </div>
   );
 };

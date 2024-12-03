@@ -25,12 +25,11 @@ const Login = () => {
       });
   
       const data = await response.json();
-  
       if (response.ok) {
         setSuccessMessage(data.message || 'Login realizado com sucesso!');
         setTimeout(() => {
           window.location.href = '/dashboard';
-        }, 2000);
+        }, 400);
       } else {
         if (data.non_field_errors) {
           setErrors({ general: data.non_field_errors[0] });

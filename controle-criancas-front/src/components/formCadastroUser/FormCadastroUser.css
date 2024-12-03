@@ -1,8 +1,9 @@
-.container {
+.container-register {
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-top: 100px;
+    transform: translate(10px, -50px);
 }
 
 h1 {
@@ -53,6 +54,13 @@ input {
    border: none;
    border-radius: 10px;
    width: 16rem;
+}
+.input-password-register {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    width: 16rem;
 }
 
 input:focus {

@@ -39,10 +39,10 @@ body {
   
   /* Container dos banners */
   .banners-container {
-    display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
+    translate: -150rem;
   }
   
   /* Estilo dos banners */

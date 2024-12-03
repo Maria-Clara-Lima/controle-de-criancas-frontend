@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './dashboard.css';
 import { FiPlus } from "react-icons/fi";
 import PopUp from '../../components/popUp/PopUp.jsx'; // Certifique-se de importar o PopUp corretamente
+import Footer from '../../components/footer/Footer.jsx';
 
 // Função para buscar as crianças
 const fetchCriancas = async () => {
@@ -98,6 +99,7 @@ const Dashboard = () => {
                     onClose={() => setShowPopup(false)}
                 />
             )}
+            <Footer />
         </div>
     );
 };

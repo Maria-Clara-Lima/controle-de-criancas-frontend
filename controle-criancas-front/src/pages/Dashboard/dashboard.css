@@ -56,9 +56,9 @@ input.search-bar {
   margin-top: 6vh;
   width: 100%;
   position: relative;
-  left: 29%;
-  
+  left: 25%;
   max-width: 600px;
+  translate: 150px, -50px;
 }
 
 .child-item {
@@ -70,6 +70,7 @@ input.search-bar {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  
 }
 
 .child-item:hover {

@@ -16,6 +16,7 @@ function PasswordEyeConfirm({name, value, onChange}) {
     return (
       <div className='senha-container'>
         <input 
+          className="input-password-register"
           type={senhaVisivel ? "text" : "password"} 
           name={name}
           value={value}
