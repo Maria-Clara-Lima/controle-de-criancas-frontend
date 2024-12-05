@@ -44,9 +44,13 @@ const PopUp = ({ crianca, onClose }) => {
                     <IoIosArrowBack /> 
                 </button>
 
+                <div className="crianca-info">
                 <h2>{crianca.nome}</h2>
                 <p><strong>Idade:</strong> {crianca.idade} anos</p>
                 <p><strong>Sala:</strong> {crianca.sala}</p>
+                </div>
+
+            <div className="responsavel-info"></div>
                 <p><strong>Classificação:</strong> {crianca.classificacao}</p>
                 <p><strong>Status Atual:</strong> {crianca.status === 'check-in' ? 'Presente' : 'Ausente'}</p>
 

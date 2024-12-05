@@ -17,7 +17,6 @@ const CadastroCrianca = () => {
   const [sala, setSala] = useState(""); 
   const [tipo, setTipo] = useState(""); 
   const [observacao, setObservacao] = useState("");
-  const [foto, setFoto] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [invalidFields, setInvalidFields] = useState(false);
 
@@ -101,7 +100,6 @@ const CadastroCrianca = () => {
           setParentesco2("");
           setTipo("");
           setObservacao("");
-          setFoto("");
         } else {
           const errorData = await response.json();
           console.error("Erro de resposta:", errorData);
@@ -122,8 +120,8 @@ const CadastroCrianca = () => {
       <h1>Cadastro de Criança</h1>
   </div>
      <form onSubmit={handleSubmit}>
-        <p>Foto:</p>
-        <input className="input-file" type="file" onChange={(e) => setFoto(e.target.files[0])} />
+        
+        
 
         <label className="nome-crianca">Nome da Criança:</label>
         <input
@@ -132,6 +130,7 @@ const CadastroCrianca = () => {
           value={nomeCrianca}
           onChange={(e) => setNomeCrianca(e.target.value)}
           required
+          placeholder="Digite aqui"
         />
 
         <label className="titulo-sala">Sala:</label>
@@ -157,6 +156,7 @@ const CadastroCrianca = () => {
           value={nomeResponsavel1}
           onChange={(e) => setNomeResponsavel1(e.target.value)}
           required
+          placeholder="Digite aqui"
         />
 
         <label>Parentesco com a Criança:</label>
@@ -166,6 +166,7 @@ const CadastroCrianca = () => {
           value={parentesco1}
           onChange={(e) => setParentesco1(e.target.value)}
           required
+          placeholder="Ex: Pai,  Mãe  ou  Avó"
         />
 
         <label>Telefone do Responsável 1:</label>
@@ -177,7 +178,7 @@ const CadastroCrianca = () => {
           onChange={(e) => handleTelefoneChange(e.target.value, setTelefone1)}
           maxLength={11}
           required
-          placeholder="81999999999"
+          placeholder="(81) 9 9999-9999"
         />
 
         <label className="responsavel-2-nome">Nome do Responsável 2:</label>
@@ -186,6 +187,7 @@ const CadastroCrianca = () => {
           name="responsavel_2"
           value={nomeResponsavel2}
           onChange={(e) => setNomeResponsavel2(e.target.value)}
+          placeholder="Digite aqui"
         />
 
         <label>Parentesco com a Criança:</label>
@@ -194,6 +196,7 @@ const CadastroCrianca = () => {
           name="parentesco2"
           value={parentesco2}
           onChange={(e) => setParentesco2(e.target.value)}
+          placeholder="Ex: Pai,  Mãe  ou  Avó"
         />
 
         <label>Telefone do Responsável 2:</label>
@@ -204,7 +207,7 @@ const CadastroCrianca = () => {
           value={telefone2}
           onChange={(e) => handleTelefoneChange(e.target.value, setTelefone2)}
           maxLength={11}
-          placeholder="81999999999"
+          placeholder="(81) 9 9999-9999"
         />
 
         <label className="data">Data de Nascimento:</label>
