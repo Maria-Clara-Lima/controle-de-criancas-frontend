@@ -14,12 +14,12 @@ body.dashboard-page {
 }
 
 .logo {
-  width: 5rem;
+  width: 4rem;
   position: relative;
   left: 47%;
   bottom: 4rem;
   border-radius: 40px;
-  height: 5rem;
+  height: 4rem;
 }
 
 input.search-bar {
@@ -30,19 +30,24 @@ input.search-bar {
 }
 
 .botao-cadastro {
-  position: relative;
-  bottom: 7rem;
-  right: 2rem;
+  position: absolute;
+  right: 80px;
+  top: 70px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   background-color:#A83F2B; 
   color: white; 
   border: none;
   border-radius: 50%; 
   font-size: 24px;
+  box-shadow: #888888 2px 2px 5px;
+}
+
+.icone-usuario {
+
 }
 
 .botao-cadastro:hover{

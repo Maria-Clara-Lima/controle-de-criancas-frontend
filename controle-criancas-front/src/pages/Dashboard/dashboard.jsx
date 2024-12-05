@@ -4,6 +4,7 @@ import './dashboard.css';
 import { FiPlus } from "react-icons/fi";
 import PopUp from '../../components/popUp/PopUp.jsx'; // Certifique-se de importar o PopUp corretamente
 import Footer from '../../components/footer/Footer.jsx';
+import { IoIosArrowBack } from "react-icons/io";
 
 // Função para buscar as crianças
 const fetchCriancas = async () => {
@@ -52,11 +53,8 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-page">
-            <header>
+            <header className='dashboard-header'>
                 <img className="logo" src="/src/assets/images/Logotipo Jardim Perfil ZN.png" alt="Logo" />
-                <Link to="/CadastroCrianca" className="botao-cadastro">
-                    <FiPlus />
-                </Link>
                 <input
                     type="text"
                     className="search-bar"
@@ -64,6 +62,9 @@ const Dashboard = () => {
                     value={searchTerm}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
+                <Link to="/CadastroCrianca" className="botao-cadastro">
+                    <FiPlus />
+                </Link>
             </header>
 
             <main className="dashboard-main">
